@@ -3,19 +3,20 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   // - - MainPage - -
   mainContainer: {
-    backgroundColor: "#e5707e",
+    backgroundColor: "#1687a7",
     paddingBottom: "2%",
     flex: 1,
   },
   btn: {
-    backgroundColor: "#e8e9a1",
+    backgroundColor: "#d3e0ea",
     alignItems: "center",
-    padding: 3,
+    padding: 15,
+    marginHorizontal: "2.5%",
   },
   btnText: {
     fontSize: 17,
     fontWeight: "bold",
-    color: "#e5707e",
+    color: "#276678",
   },
   title: {
     color: "#FFF",
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
   },
   // - - FormPage - -
   form: {
-    backgroundColor: "#fff",
+    backgroundColor: "#f6f5f5",
     padding: "2.5%",
   },
   label: {
@@ -46,7 +47,8 @@ const styles = StyleSheet.create({
     marginTop: 5,
     paddingVertical: 2,
     paddingHorizontal: 10,
-    borderColor: "#a3ddcb",
+    backgroundColor: "#fff",
+    borderColor: "#1687a7",
     borderWidth: 1,
     borderStyle: "solid",
   },
@@ -54,11 +56,11 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 10,
     marginBottom: 20,
-    backgroundColor: "#e8e9a1",
+    backgroundColor: "#d3e0ea",
     alignItems: "center",
   },
   addBtnText: {
-    color: "#e5707e",
+    color: "#276678",
     fontWeight: "bold",
   },
   //DateList
@@ -69,7 +71,7 @@ const styles = StyleSheet.create({
   },
   btnErase: {
     marginTop: 10,
-    backgroundColor: "#e8e9a1",
+    backgroundColor: "#d3e0ea",
     alignItems: "center",
     padding: 3,
   },
