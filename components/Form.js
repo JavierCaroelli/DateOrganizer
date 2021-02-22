@@ -5,7 +5,7 @@ import dateFormater from "./TimeFormatter";
 import shortid from "shortid";
 import styles from "./Styles";
 
-const Formulario = ({ dates, setDates, setSeeForm }) => {
+const Formulario = ({ dates, setDates, setSeeForm, saveStorage }) => {
   const [patient, setPatient] = useState("");
   const [owner, setOwner] = useState("");
   const [phone, setPhone] = useState("");
@@ -69,11 +69,11 @@ const Formulario = ({ dates, setDates, setSeeForm }) => {
       appointment.id = shortid.generate();
       const appointments = [...dates, appointment];
       setDates(appointments);
+      saveStorage(JSON.stringify(appointments));
       setSeeForm(false);
     }
   };
 
-  console.log(dates);
   return (
     <>
       <ScrollView style={styles.form}>

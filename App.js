@@ -1,18 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, FlatList, View, TouchableHighlight } from "react-native";
 import Turno from "./components/Turno";
 import Form from "./components/Form";
 import styles from "./components/Styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
   const [turno, setTurno] = useState([]);
   const [seeForm, setSeeForm] = useState(true);
 
+  useEffect(() => {
+    const loadStorage = async () => {
+      try {
+        const prevLoad = await AsyncStorage.getItem("dates");
+        if (prevLoad) setTurno(JSON.parse(prevLoad));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    loadStorage();
+  }, []);
+
   // Delete patients turn
   const deletePatient = (id) => {
-    setTurno((turnosActivos) => {
-      return turnosActivos.filter((turno) => turno.id !== id);
-    });
+    const filteredDates = turno.filter((turno) => turno.id !== id);
+    setTurno(filteredDates);
+    saveStorage(JSON.stringify(filteredDates));
+  };
+
+  // Saving in AsyncStorag
+  const saveStorage = async (dateJSON) => {
+    try {
+      await AsyncStorage.setItem("dates", dateJSON);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -27,7 +49,12 @@ export default function App() {
         {seeForm ? (
           <>
             <Text style={styles.title}>Create a New Date</Text>
-            <Form dates={turno} setDates={setTurno} setSeeForm={setSeeForm} />
+            <Form
+              dates={turno}
+              setDates={setTurno}
+              setSeeForm={setSeeForm}
+              saveStorage={saveStorage}
+            />
           </>
         ) : (
           <>
